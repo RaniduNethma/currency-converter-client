@@ -6,7 +6,8 @@ function InputField(props) {
         <div className="mb-5 w-208">
             <label  htmlFor={props.inputHTMLFor} 
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{props.inputFieldText}</label>
-            <input  type={props.inputType} 
+            <input  onChange={(e)=>props.inputOnChange(e.target.value)}
+                    type={props.inputType} 
                     id={props.inputID} 
                     name={props.fieldName} 
                     placeholder={props.placeHolder} 

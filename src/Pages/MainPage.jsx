@@ -33,38 +33,48 @@ function MainPage() {
             </p>
 
             <div className='flex justify-center items-center flex-col'>
-              <InputField inputHTMLFor={date} 
-                          inputID={date} 
-                          fieldName={date} 
-                          inputFieldText="Date" 
-                          inputType="Date" 
-                          placeHolder="Date"/>
-              <div className='flex'>
-                <SelectionField selectionHTMLFor={sourceCurrency} 
-                                selectID={sourceCurrency} 
-                                selectName={sourceCurrency} 
-                                fieldValue={sourceCurrency} 
-                                selectFieldText="Source Currency"  
-                                placeHolder="Select Source Currency"/>
-                <SelectionField selectionHTMLFor={targetCurrency} 
-                                selectID={targetCurrency} 
-                                selectName={targetCurrency} 
-                                fieldValue={targetCurrency} 
-                                selectFieldText="Target Currency" 
-                                placeHolder="Select Target Currency"/>
-              </div>
-              <InputField inputHTMLFor={amount} 
-                          inputID={amount} 
-                          fieldName={amount} 
-                          inputFieldText="Amount in Source Currency" 
-                          inputType="text" 
-                          placeHolder="Enter Amount"/>
-            </div>
+              <form>
+                <InputField inputHTMLFor={date} 
+                            inputOnChange={setDate}
+                            inputID={date} 
+                            fieldName={date} 
+                            inputFieldText="Date" 
+                            inputType="Date" 
+                            placeHolder="Date"/>
+                <div className='flex'>
+                  <SelectionField selectionHTMLFor={sourceCurrency} 
+                                  selectionOnChange={setSourceCurrency}
+                                  selectID={sourceCurrency} 
+                                  selectName={sourceCurrency} 
+                                  fieldValue={sourceCurrency} 
+                                  selectFieldText="Source Currency"  
+                                  placeHolder="Select Source Currency"/>
+                  <SelectionField selectionHTMLFor={targetCurrency} 
+                                  selectionOnChange={setTargetCurrency}
+                                  selectID={targetCurrency} 
+                                  selectName={targetCurrency} 
+                                  fieldValue={targetCurrency} 
+                                  selectFieldText="Target Currency" 
+                                  placeHolder="Select Target Currency"/>
+                </div>
+                <InputField inputHTMLFor={amount} 
+                            inputOnChange={setAmount}
+                            inputID={amount} 
+                            fieldName={amount} 
+                            inputFieldText="Amount in Source Currency" 
+                            inputType="text" 
+                            placeHolder="Enter Amount"/>
+                
+                <div className='flex justify-between items-center'>
+                  <ConvertButton />
+                </div>
 
-            <div className='flex justify-center items-center'>
-              <ConvertButton />
-            </div>
+                <div>
+                  <p>result is</p>
+                </div>
 
+              </form>
+            </div>
           </div>
         </div>
     </>
