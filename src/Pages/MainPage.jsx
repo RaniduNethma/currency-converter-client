@@ -12,7 +12,7 @@ function MainPage() {
   const [targetCurrency, setTargetCurrency] = useState("");
   const [amount, setAmount] = useState(0);
   const [result, setResult] = useState(0);
-  const [currencyNames, setCurrencyNames] = useState();
+  const [currencyNames, setCurrencyNames] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,12 +27,14 @@ function MainPage() {
   useEffect( () => {
     const getCurrencyNames = async() => {
       try{
-        const responce = await axios.get("http://localhost:9000/getAllCurrency")
+        const responce = await axios.get("http://localhost:9000/getAllCurrency");
+        setCurrencyNames(responce.data);
       }
       catch(err){
         console.log(err);
       }
-    }
+    };
+    getCurrencyNames();
   }, [])
 
   return (
@@ -69,14 +71,16 @@ function MainPage() {
                                 selectionOnChange={setSourceCurrency}
                                 selectID={sourceCurrency} 
                                 selectName={sourceCurrency} 
-                                fieldValue={sourceCurrency} 
+                                //fieldValue={sourceCurrency}
+                                currencyNames={currencyNames}
                                 selectFieldText="Source Currency"  
                                 placeHolder="Select Source Currency"/>
                 <SelectionField selectionHTMLFor={targetCurrency} 
                                 selectionOnChange={setTargetCurrency}
                                 selectID={targetCurrency} 
                                 selectName={targetCurrency} 
-                                fieldValue={targetCurrency} 
+                                //fieldValue={targetCurrency} 
+                                currencyNames={currencyNames}
                                 selectFieldText="Target Currency" 
                                 placeHolder="Select Target Currency"/>
               </div>
