@@ -16,12 +16,7 @@ function MainPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      date,
-      sourceCurrency,
-      targetCurrency,
-      amount
-    )
+    console.log(this.props.sourceCurrency)
   }
 
   useEffect( () => {

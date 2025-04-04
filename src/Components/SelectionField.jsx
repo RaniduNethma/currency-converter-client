@@ -17,7 +17,7 @@ function SelectionField(props) {
               <option value="">{props.placeHolder}</option>
               {Object.keys(props.currencyNames).map((currency) => (
                 <option className='p-1' key={currency} value={currency}>
-                  {(props.currencyNames)[currency]}
+                  {props.currencyNames[currency]}
                 </option>
               ))}
             </select>
